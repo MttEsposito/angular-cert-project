@@ -1,0 +1,22 @@
+.spacer {
+  margin: 2rem 0;
+}
+.head {
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.body {
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+}
+
+@media only screen and (max-width: 800px) {
+  .body {
+    flex-flow: column;
+    align-items: flex-start;
+  }
+}

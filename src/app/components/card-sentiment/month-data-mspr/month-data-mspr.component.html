@@ -1,0 +1,14 @@
+<div class="month-card">
+    <div class="month-data">
+        <h4>{{ item.month | monthNamefromNumber | uppercase }}</h4>
+        <div>
+            <span>Change: <strong>{{item.change}}</strong></span>
+        </div>
+        <div>
+            <span>MSPR: <strong>{{item.mspr}}</strong></span>
+        </div>
+    </div>
+    <div class="arrow-align">
+        <span class="arrow" [ngClass]="item.change <= 0 ? 'down' : 'up'"></span>
+    </div>
+</div>

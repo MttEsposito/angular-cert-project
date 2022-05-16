@@ -1,0 +1,19 @@
+<div class="container spacer-top">
+    <div class="card">
+        <div class="content">
+            <label class="label">Enter the symbol of a stock to track (i.e. AAPL,TSLA,GOOGL)</label>
+            <div class="spacer-top">
+                <form #stockForm="ngForm" class="flex align-items" (ngSubmit)="saveStock(stockForm)" autocomplete="off">
+                    <input type="text" 
+                        class="input-width"
+                        placeholder="Type in a stock symbol 1 to 5 letter" 
+                        ngModel 
+                        name="stock" 
+                        [maxlength]="maxLength" 
+                        required>
+                    <button [disabled]="stockForm.invalid" type="submit">Track Stock</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

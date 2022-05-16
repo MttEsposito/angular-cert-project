@@ -1,0 +1,13 @@
+<section>
+    <app-form-stock-input></app-form-stock-input>
+</section>
+<br>
+<section>
+    <div class="container">
+        <ul class="list-stocks">
+            <li *ngFor="let stock of stocks$ | async | orderBy: 'key' : true">
+                <app-card-list-item [item]="stock"></app-card-list-item>
+            </li>
+        </ul>
+    </div>
+</section>

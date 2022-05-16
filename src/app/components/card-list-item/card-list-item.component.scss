@@ -1,0 +1,14 @@
+.spacer-bottom {
+  margin-bottom: 1rem;
+}
+.head,
+.body {
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.stock-value {
+  min-width: 200px;
+}
+

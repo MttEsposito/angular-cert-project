@@ -1,0 +1,78 @@
+<div class="card spacer-bottom">
+    <div class="content" *ngIf="isLoading">
+        loading...
+    </div>
+    <div class="content" *ngIf="!isLoading">
+        <div [ngSwitch]="result">
+            <div *ngSwitchCase="switchStatesEnum.error">
+                <ng-container *ngTemplateOutlet="errorStock"></ng-container>
+            </div>
+            <div *ngSwitchCase="switchStatesEnum.notfound">
+                <ng-container *ngTemplateOutlet="stockNotExist"></ng-container>
+            </div>
+            <div *ngSwitchDefault>
+                <ng-container *ngTemplateOutlet="stockExist"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #stockExist>
+    <div class="flex head">
+        <h2>{{stockSymbol?.description | titlecase}} ({{stockSymbol?.symbol}})</h2>
+        <button type="button" (click)="removeItem()">
+            <span>&#10006;</span>
+        </button>
+    </div>
+    <div class="flex body spacer-bottom">
+        <div>
+            <div class="flex spacer-bottom">
+                <span class="stock-value">change today:
+                    <strong>{{quote.dp | number : '1.2-2' }}% </strong>
+                </span>
+                <span class="stock-value">opening price:
+                    <strong>{{quote.o | currency: 'USD'}}</strong>
+                </span>
+            </div>
+            <div class="flex spacer-bottom">
+                <span class="stock-value">current price:
+                    <strong>{{quote.c | currency: 'USD'}}</strong>
+                </span>
+                <span class="stock-value">high price:
+                    <strong>{{quote.h | currency: 'USD'}}</strong>
+                </span>
+            </div>
+        </div>
+        <div>
+            <span class="arrow" [ngClass]="quote.dp <= 0 ? 'down' : 'up'"></span>
+        </div>
+    </div>
+
+    <div class="flex footer">
+        <a [routerLink]="[ '/sentiment', stockSymbol?.symbol ]">
+            Go to social sentiment details >
+        </a>
+    </div>
+
+</ng-template>
+
+<ng-template #stockNotExist>
+    <div class="flex head">
+        <h2>No match found with the stock {{ item.value }}</h2>
+        <button type="button" (click)="removeItem()">
+            <span>&#10006;</span>
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #errorStock>
+    <div class="flex head">
+        <h2>Ups something goes wrong check the data and refresh or remove it</h2>
+        <button type="button" (click)="getStockData()">
+            <span>retry get data stock</span>
+        </button>
+        <button type="button" (click)="removeItem()">
+            <span>&#10006;</span>
+        </button>
+    </div>
+</ng-template>

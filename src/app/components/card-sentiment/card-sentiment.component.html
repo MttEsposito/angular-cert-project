@@ -1,0 +1,36 @@
+<div class="card spacer">
+    <div class="content" *ngIf="isLoading">
+        loading...
+    </div>
+    <div class="content" *ngIf="!isLoading">
+        <div [ngSwitch]="result">
+            <div *ngSwitchCase="switchStatesEnum.error">
+                <ng-container *ngTemplateOutlet="errorMonthStock"></ng-container>
+            </div>
+            <div *ngSwitchDefault>
+                <ng-container *ngTemplateOutlet="stocksThreeMonths"></ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #stocksThreeMonths>
+    <div class="flex head">
+        <h2>{{stockSymbol?.description | titlecase}} ({{stockSymbol?.symbol}})</h2>
+    </div>
+    <div class="flex body">
+        <ng-container *ngTemplateOutlet="monthData?.data?.length ? monthCardDisplay : noDataFound"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #errorMonthStock>
+    An Error occurred please try to refresh the page
+</ng-template>
+
+<ng-template #monthCardDisplay>
+    <app-month-data-mspr [item]="month" *ngFor="let month of monthData?.data"></app-month-data-mspr>
+</ng-template>
+
+<ng-template #noDataFound>
+    Sorry no data available found for the last 3 months
+</ng-template>

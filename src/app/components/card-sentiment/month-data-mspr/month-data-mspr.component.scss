@@ -1,0 +1,15 @@
+.month-card {
+  position: relative;
+  width: 250px;
+  border: 1px solid black;
+  .month-data {
+    margin-left: 1rem;
+    padding-bottom: 2rem;
+  }
+  .arrow-align {
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    transform: translate(50%, -50%);
+  }
+}

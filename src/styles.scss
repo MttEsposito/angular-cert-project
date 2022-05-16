@@ -1,0 +1,48 @@
+html {
+  overflow: auto;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(204, 204, 204, 0.558);
+}
+.flex {
+  display: flex;
+}
+
+.container {
+  position: relative;
+  margin: 0 1rem;
+  width: auto;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%),
+    0 0 0 1px rgb(10 10 10 / 2%);
+  color: #4a4a4a;
+  max-width: 100%;
+  position: relative;
+  .content {
+    padding: 1.5rem;
+  }
+}
+
+.arrow {
+  margin-right: 20rem;
+  font-size: 50px;
+  font-weight: bolder;
+  &.up {
+    color: green;
+    &::after {
+      content: " \2191";
+    }
+  }
+  &.down {
+    color: red;
+    &::after{
+      content: ' \2193';
+    }
+  }
+}
